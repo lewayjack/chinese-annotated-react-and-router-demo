@@ -3,9 +3,9 @@
 - 注释掉了firebase 相关代码
 - 代码中增加了中文注释笔记
 
-安装依赖
-`npm i`
-跑起项目
+## 安装依赖
+`npm i`
+## 跑起项目
 `npm run dev`
-watch修改样式
+## watch修改样式
 `npm run styles:watch`

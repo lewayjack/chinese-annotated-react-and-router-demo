@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { formatPrice } from "../helpers";
+// react动画组件
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 class Order extends React.Component {
@@ -9,6 +10,7 @@ class Order extends React.Component {
     order: PropTypes.object,
     removeFromOrder: PropTypes.func
   };
+  // 当组件中有一部分内容需要循环时 除了再抽出一个小组件 ，也可以另写一个方法来渲染
   renderOrder = key => {
     const fish = this.props.fishes[key];
     const count = this.props.order[key];
