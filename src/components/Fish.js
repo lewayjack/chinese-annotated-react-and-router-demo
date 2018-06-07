@@ -4,6 +4,7 @@ import { formatPrice } from "../helpers";
 
 class Fish extends React.Component {
   static propTypes = {
+    // 详细要求props传入对象的每一个值
     details: PropTypes.shape({
       image: PropTypes.string,
       name: PropTypes.string,
@@ -11,6 +12,7 @@ class Fish extends React.Component {
       status: PropTypes.string,
       price: PropTypes.number
     }),
+    // func 和 bool 是关键字的替代
     addToOrder: PropTypes.func
   };
   render() {

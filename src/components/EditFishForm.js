@@ -18,6 +18,7 @@ class EditFishForm extends React.Component {
     // update that fish
     // 1. Take a copy of the curernt fish
     let updatedFish
+    // 当值的key为price的时候，需要把内容转换成number
     if (event.currentTarget.name === 'price') {
       updatedFish = {
         ...this.props.fish,

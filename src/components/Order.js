@@ -15,16 +15,21 @@ class Order extends React.Component {
     const fish = this.props.fishes[key];
     const count = this.props.order[key];
     const isAvailable = fish && fish.status === "available";
+    // 配置动画参数以便复用
+    // 需要注意的是CSSTransition的类名是 classNames，多个s
     const transitionOptions = {
       classNames: "order",
       key,
       timeout: { enter: 500, exit: 500 }
     };
     // Make sure the fish is loaded before we continue!
+    // 渲染空内容的时候
     if (!fish) return null;
 
+    // 根据state的值来确定渲染内容
     if (!isAvailable) {
       return (
+        // 解构传入动画参数
         <CSSTransition {...transitionOptions}>
           <li key={key}>
             Sorry {fish ? fish.name : "fish"} is no longer available
@@ -32,10 +37,13 @@ class Order extends React.Component {
         </CSSTransition>
       );
     }
+
+    // state正常时的渲染内容
     return (
       <CSSTransition {...transitionOptions}>
         <li key={key}>
           <span>
+          {/* TransitionGroup 可以生成标签 */}
             <TransitionGroup component="span" className="count">
               <CSSTransition
                 classNames="count"
@@ -47,6 +55,7 @@ class Order extends React.Component {
             </TransitionGroup>
             lbs {fish.name}
             {formatPrice(count * fish.price)}
+            {/* 调用props传入的方法，删除state的内容 */}
             <button onClick={() => this.props.removeFromOrder(key)}>
               &times;
             </button>
@@ -57,6 +66,7 @@ class Order extends React.Component {
   };
   render() {
     const orderIds = Object.keys(this.props.order);
+    // 计算总价格
     const total = orderIds.reduce((prevTotal, key) => {
       const fish = this.props.fishes[key];
       const count = this.props.order[key];
@@ -66,10 +76,12 @@ class Order extends React.Component {
       }
       return prevTotal;
     }, 0);
+    // 返回要渲染的order内容
     return (
       <div className="order-wrap">
         <h2>Order</h2>
         <TransitionGroup component="ul" className="order">
+          {/* 此处调用上述方法循环渲染 */}
           {orderIds.map(this.renderOrder)}
         </TransitionGroup>
         <div className="total">

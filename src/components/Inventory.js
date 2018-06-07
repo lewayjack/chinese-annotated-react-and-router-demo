@@ -90,6 +90,7 @@ class Inventory extends React.Component {
         <h2>Inventory</h2>
         {/* {logout} */}
         {Object.keys(this.props.fishes).map(key => (
+          // 编辑内容组件
           <EditFishForm
             key={key}
             index={key}
