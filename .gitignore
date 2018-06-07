@@ -59,7 +59,6 @@ typings/
 
 # project ignore
 release/
-public/
 
 
 # WebStorm
