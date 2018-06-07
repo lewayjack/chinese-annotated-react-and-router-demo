@@ -1,0 +1,43 @@
+/*
+  Possible Animations:
+  enter
+  exit
+  appear Must set transitionAppear={true} on animation component
+*/
+
+// 组件进入时的初始状态
+.order-enter
+  transform: translateX(-120%)
+  transition 0.5s
+  max-height: 0
+  padding 0 !important
+  // 组件进入时的最终状态
+  &.order-enter-active
+    max-height 60px
+    transform: translateX(0)
+    padding 2rem 0 !important
+
+// 组件离开时的初始状态
+.order-exit
+  transition 0.5s
+  transform: translateX(0)
+  // 组件离开时的最终状态
+  &.order-exit-active
+    transform: translateX(120%)
+    padding: 0
+
+
+.count-enter
+  transition .5s
+  transform translateY(100%)
+  &.count-enter-active
+    transform translateY(0)
+
+.count-exit
+  transform translateY(0)
+  transition .5s
+  position absolute
+  left 0
+  bottom 0
+  &.count-exit-active
+    transform translateY(-100%)
