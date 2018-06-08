@@ -76,7 +76,7 @@ class App extends React.Component {
     // 1. take a copy of state
     const fishes = { ...this.state.fishes }
     // 2. update the state
-    fishes[key] = null
+    delete fishes[key]
     // 3.  update state
     this.setState({ fishes })
   }

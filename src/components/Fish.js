@@ -16,7 +16,6 @@ class Fish extends React.Component {
     addToOrder: PropTypes.func
   }
   render () {
-    console.log(this.props.details)
     const { image, name, price, desc, status } = this.props.details
     const isAvailable = status === 'available'
     return (
