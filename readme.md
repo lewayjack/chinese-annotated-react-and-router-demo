@@ -9,3 +9,6 @@
 `npm run dev`
 ## watch修改样式
 `npm run styles:watch`
+
+## 接手webpack配置
+`npm run eject`

@@ -1,5 +1,5 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react'
+import PropTypes from 'prop-types'
 
 class EditFishForm extends React.Component {
   static propTypes = {
@@ -11,10 +11,11 @@ class EditFishForm extends React.Component {
       price: PropTypes.number
     }),
     index: PropTypes.string,
-    updateFish: PropTypes.func
-  };
+    updateFish: PropTypes.func,
+    deleteFish: PropTypes.func
+  }
   handleChange = event => {
-    console.log(event.currentTarget.value);
+    console.log(event.currentTarget.value)
     // update that fish
     // 1. Take a copy of the curernt fish
     let updatedFish
@@ -22,48 +23,48 @@ class EditFishForm extends React.Component {
     if (event.currentTarget.name === 'price') {
       updatedFish = {
         ...this.props.fish,
-        ['price']: parseFloat(event.currentTarget.value)
-      };
+        price: parseFloat(event.currentTarget.value)
+      }
     } else {
       updatedFish = {
         ...this.props.fish,
         [event.currentTarget.name]: event.currentTarget.value
-      };
+      }
     }
-    this.props.updateFish(this.props.index, updatedFish);
-  };
-  render() {
+    this.props.updateFish(this.props.index, updatedFish)
+  }
+  render () {
     return (
-      <div className="fish-edit">
+      <div className='fish-edit'>
         <input
-          type="text"
-          name="name"
+          type='text'
+          name='name'
           onChange={this.handleChange}
           value={this.props.fish.name}
         />
         <input
-          type="text"
-          name="price"
+          type='text'
+          name='price'
           onChange={this.handleChange}
           value={this.props.fish.price}
         />
         <select
-          type="text"
-          name="status"
+          type='text'
+          name='status'
           onChange={this.handleChange}
           value={this.props.fish.status}
         >
-          <option value="available">Fresh!</option>
-          <option value="unavailable">Sold Out!</option>
+          <option value='available'>Fresh!</option>
+          <option value='unavailable'>Sold Out!</option>
         </select>
         <textarea
-          name="desc"
+          name='desc'
           onChange={this.handleChange}
           value={this.props.fish.desc}
         />
         <input
-          type="text"
-          name="image"
+          type='text'
+          name='image'
           onChange={this.handleChange}
           value={this.props.fish.image}
         />
@@ -71,8 +72,8 @@ class EditFishForm extends React.Component {
           Remove Fish
         </button>
       </div>
-    );
+    )
   }
 }
 
-export default EditFishForm;
+export default EditFishForm

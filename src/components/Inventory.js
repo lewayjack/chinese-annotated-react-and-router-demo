@@ -1,7 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
-import AddFishForm from "./AddFishForm";
-import EditFishForm from "./EditFishForm";
+import React from 'react'
+import PropTypes from 'prop-types'
+import AddFishForm from './AddFishForm'
+import EditFishForm from './EditFishForm'
 
 // firebase 登录相关库
 // import firebase from "firebase";
@@ -11,17 +11,18 @@ import EditFishForm from "./EditFishForm";
 class Inventory extends React.Component {
   static propTypes = {
     fishes: PropTypes.object,
+    addFish: PropTypes.func,
     updateFish: PropTypes.func,
     deleteFish: PropTypes.func,
     loadSampleFishes: PropTypes.func
-  };
+  }
 
   state = {
     uid: null,
     owner: null
-  };
+  }
 
-  componentDidMount() {
+  componentDidMount () {
     // firebase.auth().onAuthStateChanged(user => {
     //   if (user) {
     //     this.authHandler({ user });
@@ -65,8 +66,8 @@ class Inventory extends React.Component {
 
   // end 登录相关方法
 
-  render() {
-    const logout = <button onClick={this.logout}>Log Out!</button>;
+  render () {
+    // const logout = <button onClick={this.logout}>Log Out!</button>
 
     // 1. Check if they are logged in
     // if (!this.state.uid) {
@@ -86,26 +87,28 @@ class Inventory extends React.Component {
     // 3. They must be the owner, just render the inventory
 
     return (
-      <div className="inventory">
+      <div className='inventory'>
         <h2>Inventory</h2>
         {/* {logout} */}
-        {Object.keys(this.props.fishes).map(key => (
+        {Object.keys(this.props.fishes).map(key => {
           // 编辑内容组件
-          <EditFishForm
-            key={key}
-            index={key}
-            fish={this.props.fishes[key]}
-            updateFish={this.props.updateFish}
-            deleteFish={this.props.deleteFish}
-          />
-        ))}
+          return (
+            <EditFishForm
+              key={key}
+              index={key}
+              fish={this.props.fishes[key]}
+              updateFish={this.props.updateFish}
+              deleteFish={this.props.deleteFish}
+            />
+          )
+        })}
         <AddFishForm addFish={this.props.addFish} />
         <button onClick={this.props.loadSampleFishes}>
           Load Sample Fishes
         </button>
       </div>
-    );
+    )
   }
 }
 
-export default Inventory;
+export default Inventory
